@@ -20,7 +20,7 @@
             hargaPaket: 35000000,
             dp: 5000000,
             tenor: 12,
-            marginRate: 1, // 1% flat per bulan
+            marginRate: 1,
             formatRupiah(value) {
                 return new Intl.NumberFormat('id-ID', {
                     style: 'currency',

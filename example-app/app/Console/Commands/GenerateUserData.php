@@ -28,19 +28,14 @@ class GenerateUserData extends Command
     {
         $count = (int)$this->argument('count');
 
-        // Initialize Faker with Indonesian locale
         $faker = Faker::create('id_ID');
 
-        // Create file path in storage/app/
         $filePath = storage_path('app/users_' . date('Y-m-d_H-i-s') . '.csv');
 
-        // Open file for writing
         $file = fopen($filePath, 'w');
 
-        // Write CSV header
         fputcsv($file, ['Nama', 'Email', 'Nomor Telepon']);
 
-        // Generate and write data
         for ($i = 0; $i < $count; $i++) {
             $nama = $faker->name();
             $email = $faker->unique()->safeEmail();
@@ -49,11 +44,9 @@ class GenerateUserData extends Command
             fputcsv($file, [$nama, $email, $nomorTelepon]);
         }
 
-        // Close file
         fclose($file);
 
-        // Display success message
-        $this->info("✓ File generated successfully at: {$filePath}");
-        $this->info("✓ Total records: {$count}");
+        $this->info("File generated successfully at: {$filePath}");
+        $this->info("Total records: {$count}");
     }
 }
